@@ -1,21 +1,21 @@
-# 🎵 Song Registry DApp - Blockchain Music Platform
+# Song Registry DApp - Blockchain Music Platform
 
 A full-stack decentralized application (DApp) that demonstrates how to integrate Flask web development with Ethereum blockchain technology. This project showcases a simple music registry where users can register songs on the blockchain and view all registered tracks.
 
-## 🚀 Project Overview
+## Project Overview
 
 This DApp combines traditional web development with blockchain technology to create a decentralized song registry. It demonstrates the fundamental concepts of Web3 development, smart contract interaction, and blockchain data management through a clean, educational interface.
 
-### ✨ Features
+### Features
 
-- **🔗 Blockchain Integration**: Direct connection to Ethereum blockchain via Web3.py
-- **📝 Song Registration**: Add songs with title, URL, and price to the blockchain
-- **📊 Data Visualization**: View all registered songs from the smart contract
-- **💰 Price Management**: Set and display song prices in ETH
-- **🎨 Clean UI**: Minimal, responsive web interface for easy learning
-- **🔧 Educational Focus**: Well-commented code for blockchain learning
+- ** Blockchain Integration**: Direct connection to Ethereum blockchain via Web3.py
+- ** Song Registration**: Add songs with title, URL, and price to the blockchain
+- ** Data Visualization**: View all registered songs from the smart contract
+- ** Price Management**: Set and display song prices in ETH
+- ** Clean UI**: Minimal, responsive web interface for easy learning
+- ** Educational Focus**: Well-commented code for blockchain learning
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 ### Backend
 - **Flask** - Python web framework
@@ -32,14 +32,14 @@ This DApp combines traditional web development with blockchain technology to cre
 - **CSS3** - Styling and responsive design
 - **Jinja2** - Template engine
 
-## 📋 Prerequisites
+## Prerequisites
 
 - Python 3.7+
 - Node.js and npm
 - Truffle Suite
 - Ganache CLI
 
-## 🚀 Quick Start
+## Quick Start
 
 ### 1. Clone the Repository
 ```bash
@@ -77,7 +77,7 @@ python app.py
 
 Visit `http://127.0.0.1:5000` to see your DApp in action!
 
-## 🏗️ Project Structure
+## Project Structure
 
 ```
 song-registry-dapp/
@@ -96,7 +96,7 @@ song-registry-dapp/
     └── truffle-config.js          # Truffle configuration
 ```
 
-## 🔧 Smart Contract Functions
+## Smart Contract Functions
 
 ### Core Functions
 - `registerSong(title, url, price)` - Add a new song to the registry
@@ -113,7 +113,7 @@ struct Song {
 }
 ```
 
-## 🎯 Learning Objectives
+## Learning Objectives
 
 This project teaches:
 
@@ -123,7 +123,7 @@ This project teaches:
 4. **Transaction Building**: Creating blockchain transactions
 5. **DApp Architecture**: Structuring decentralized applications
 
-## 🔍 Key Code Examples
+## Key Code Examples
 
 ### Connecting to Blockchain
 ```python
@@ -146,7 +146,7 @@ transaction = contract.functions.registerSong(title, url, price).build_transacti
 })
 ```
 
-## 🚧 Current Limitations & Future Enhancements
+## Current Limitations & Future Enhancements
 
 ### Current State
 - Transactions are built but not automatically signed/sent (educational safety)
@@ -162,7 +162,7 @@ transaction = contract.functions.registerSong(title, url, price).build_transacti
 - [ ] Advanced search and filtering
 - [ ] Artist profiles and royalty distribution
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! This project is designed for learning, so improvements that enhance educational value are especially appreciated.
 
@@ -172,18 +172,18 @@ Contributions are welcome! This project is designed for learning, so improvement
 4. Add tests if applicable
 5. Submit a pull request
 
-## 📚 Educational Resources
+## Educational Resources
 
 - [Ethereum Documentation](https://ethereum.org/developers/)
 - [Web3.py Documentation](https://web3py.readthedocs.io/)
 - [Truffle Suite](https://trufflesuite.com/)
 - [Solidity Documentation](https://docs.soliditylang.org/)
 
-## 📄 License
+## License
 
 This project is open source and available under the [MIT License](LICENSE).
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 Built as a learning project to demonstrate the integration of traditional web development with blockchain technology. Perfect for developers new to Web3 and DApp development.
 
