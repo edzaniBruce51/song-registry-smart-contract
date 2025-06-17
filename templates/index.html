@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Song Registry - Home{% endblock %}
+
+{% block content %}
+<h2>Registered Songs</h2>
+
+{% if songs %}
+    <p>Total songs in registry: {{ songs|length }}</p>
+    
+    {% for song in songs %}
+    <div class="song-card">
+        <h3>{{ song.title }}</h3>
+        <p><strong>Owner:</strong> {{ song.owner }}</p>
+        <p><strong>URL:</strong> <a href="{{ song.url }}" target="_blank">{{ song.url }}</a></p>
+        <p><strong>Price:</strong> {{ song.price }} ETH</p>
+        <p><strong>Song ID:</strong> {{ song.id }}</p>
+    </div>
+    {% endfor %}
+{% else %}
+    <div class="alert alert-info">
+        <p>No songs registered yet. <a href="{{ url_for('add_song') }}">Add the first song!</a></p>
+    </div>
+{% endif %}
+
+<div style="margin-top: 30px; padding: 15px; background-color: #e9ecef; border-radius: 4px;">
+    <h3>How this works:</h3>
+    <ul>
+        <li>This Flask app connects to your local blockchain (Ganache)</li>
+        <li>It reads data from your Song Registry smart contract</li>
+        <li>Songs are stored on the blockchain, not in a traditional database</li>
+        <li>Each song has an owner (Ethereum address), title, URL, and price</li>
+    </ul>
+</div>
+{% endblock %}
