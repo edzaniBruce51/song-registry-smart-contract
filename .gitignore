@@ -44,3 +44,7 @@ Thumbs.db
 
 # Environment variables
 .env
+
+# Windows crash dumps
+*.stackdump
+bash.exe.stackdump

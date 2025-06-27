@@ -9,7 +9,7 @@ app.secret_key = 'your-secret-key-here'  # Change this in production
 w3 = Web3(Web3.HTTPProvider('http://127.0.0.1:7545'))
 
 # Contract details - you'll need to update these after deploying
-CONTRACT_ADDRESS = Web3.to_checksum_address('0x50C0b823975dad93274b11b101e041f92353D3ea')  # New working contract address
+CONTRACT_ADDRESS = Web3.to_checksum_address('0xc2E99d100a0741456B676230Ea5E6d251C728c3d')  # New working contract address
 CONTRACT_ABI = [
     {
         "inputs": [
