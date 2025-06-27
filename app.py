@@ -5,8 +5,15 @@ import json
 app = Flask(__name__)
 app.secret_key = 'your-secret-key-here'  # Change this in production
 
-# Connect to local blockchain (Ganache)
-w3 = Web3(Web3.HTTPProvider('http://127.0.0.1:7545'))
+# Connect to local blockchain (Ganache) - will fail in production
+try:
+    w3 = Web3(Web3.HTTPProvider('http://127.0.0.1:7545'))
+    # Test connection
+    w3.eth.get_block_number()
+    BLOCKCHAIN_CONNECTED = True
+except:
+    w3 = None
+    BLOCKCHAIN_CONNECTED = False
 
 # Contract details - you'll need to update these after deploying
 CONTRACT_ADDRESS = Web3.to_checksum_address('0xc2E99d100a0741456B676230Ea5E6d251C728c3d')  # New working contract address
@@ -49,6 +56,27 @@ DEFAULT_ACCOUNT = Web3.to_checksum_address('0x589dAbC24C0d94EF42264fdDCB326bf251
 @app.route('/')
 def index():
     """Display all songs from the smart contract"""
+    if not BLOCKCHAIN_CONNECTED:
+        # Demo data for when blockchain is not available
+        demo_songs = [
+            {
+                'id': 0,
+                'title': 'Demo Song 1',
+                'owner': '0x1234567890abcdef...',
+                'url': 'https://example.com/song1.mp3',
+                'price': '0.01'
+            },
+            {
+                'id': 1,
+                'title': 'Demo Song 2',
+                'owner': '0xabcdef1234567890...',
+                'url': 'https://example.com/song2.mp3',
+                'price': '0.05'
+            }
+        ]
+        flash('Demo mode: Blockchain not connected. Showing sample data.', 'info')
+        return render_template('index.html', songs=demo_songs)
+
     try:
         # Create contract instance
         contract = w3.eth.contract(address=CONTRACT_ADDRESS, abi=CONTRACT_ABI)
@@ -78,11 +106,16 @@ def index():
 def add_song():
     """Add a new song to the registry"""
     if request.method == 'POST':
-        try:
-            title = request.form['title']
-            url = request.form['url']
-            price_ether = float(request.form['price'])
+        title = request.form['title']
+        url = request.form['url']
+        price_ether = float(request.form['price'])
 
+        if not BLOCKCHAIN_CONNECTED:
+            flash(f'Demo mode: Song "{title}" would be registered for {price_ether} ETH', 'success')
+            flash('Note: Blockchain not connected. This is a demo of the interface.', 'info')
+            return redirect(url_for('index'))
+
+        try:
             # Convert price to wei
             price_wei = w3.to_wei(price_ether, 'ether')
 
@@ -110,4 +143,6 @@ def add_song():
     return render_template('add_song.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    import os
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=False)
