@@ -5,7 +5,7 @@
 {% block content %}
 <h2>Add New Song</h2>
 
-<form method="POST">
+<form id="add-song-form">
     <div class="form-group">
         <label for="title">Song Title:</label>
         <input type="text" id="title" name="title" required>
@@ -21,28 +21,16 @@
         <input type="number" id="price" name="price" step="0.001" min="0" placeholder="0.01" required>
     </div>
     
-    <button type="submit">Register Song</button>
+    <button type="submit">Register Song with MetaMask</button>
 </form>
 
 <div style="margin-top: 30px; padding: 15px; background-color: #fff3cd; border-radius: 4px; border: 1px solid #ffeaa7;">
     <h3>Important Notes:</h3>
     <ul>
-        <li><strong>Contract Setup Required:</strong> You need to deploy your smart contract first and update the contract address in app.py</li>
-        <li><strong>Ganache Required:</strong> Make sure Ganache is running on http://127.0.0.1:7545</li>
-        <li><strong>Account Setup:</strong> Update the DEFAULT_ACCOUNT in app.py with your Ganache account address</li>
-        <li><strong>Transaction Signing:</strong> This demo shows how to build transactions. In production, you'd need proper wallet integration</li>
+        <li><strong>MetaMask Required:</strong> You need MetaMask installed to register songs</li>
+        <li><strong>Sepolia Network:</strong> Make sure MetaMask is connected to Sepolia testnet</li>
+        <li><strong>Gas Fees:</strong> You'll need Sepolia ETH to pay for transaction gas fees</li>
+        <li><strong>Confirmation Time:</strong> It may take a few seconds for your transaction to be confirmed</li>
     </ul>
-</div>
-
-<div style="margin-top: 20px; padding: 15px; background-color: #e9ecef; border-radius: 4px;">
-    <h3>Next Steps to Make This Work:</h3>
-    <ol>
-        <li>Deploy your smart contract using Truffle: <code>truffle migrate</code></li>
-        <li>Copy the deployed contract address</li>
-        <li>Update CONTRACT_ADDRESS in app.py</li>
-        <li>Update DEFAULT_ACCOUNT with your Ganache account</li>
-        <li>Install required packages: <code>pip install flask web3</code></li>
-        <li>Run the app: <code>python app.py</code></li>
-    </ol>
 </div>
 {% endblock %}

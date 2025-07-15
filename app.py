@@ -7,7 +7,7 @@ app.secret_key = 'your-secret-key-here'  # Change this in production
 
 # Connect to local blockchain (Ganache) - will fail in production
 try:
-    w3 = Web3(Web3.HTTPProvider('http://127.0.0.1:7545'))
+    w3 = Web3(Web3.HTTPProvider('https://eth-sepolia.g.alchemy.com/v2/6repAhNalj4g3-DPf3iEGQhPClBgyErP'))
     # Test connection
     w3.eth.get_block_number()
     BLOCKCHAIN_CONNECTED = True
@@ -16,7 +16,7 @@ except:
     BLOCKCHAIN_CONNECTED = False
 
 # Contract details - you'll need to update these after deploying
-CONTRACT_ADDRESS = Web3.to_checksum_address('0xc2E99d100a0741456B676230Ea5E6d251C728c3d')  # New working contract address
+CONTRACT_ADDRESS = Web3.to_checksum_address('0xc94EAb806e09A5e8ce30F0fE5C952B1F05288716')  # New working contract address
 CONTRACT_ABI = [
     {
         "inputs": [
